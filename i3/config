@@ -16,8 +16,8 @@ default_floating_border normal
 hide_edge_borders none
 
 # Switching keyboard layouts
-bindsym $mod1+Shift+k exec xmodmap ~/.config/.Xmodmap-cn
-bindsym $mod1+Shift+c exec xmodmap ~/.config/.Xmodmap
+bindsym $mod1+Shift+k exec xmodmap ~/.config/autostart/.Xmodmap-cn
+bindsym $mod1+Shift+c exec xmodmap ~/.config/autostart/.Xmodmap
 # Applations 
 #bindsym $mod+c exec chromium --proxy-server="socks5://localhost:1080"
 #bindsym $mod+c exec google-chrome-stable --proxy-server="socks5://localhost:1080"
@@ -296,7 +296,7 @@ bindsym $mod+9 exec --no-startup-id blurlock
 
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 # Autostart applications
-exec --no-startup-id xmodmap ~/.config/.Xmodmap
+exec xmodmap ~/.config/autostart/.Xmodmap
 exec_always fcitx
 exec_always albert
 exec --no-startup-id ss-qt5
