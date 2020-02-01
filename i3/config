@@ -19,7 +19,11 @@ hide_edge_borders none
 bindsym $mod1+Shift+k exec xmodmap ~/.config/.Xmodmap-cn
 bindsym $mod1+Shift+c exec xmodmap ~/.config/.Xmodmap
 # Applations 
-bindsym $mod+c exec google-chrome-stable --proxy-server="socks5://localhost:1080"
+#bindsym $mod+c exec chromium --proxy-server="socks5://localhost:1080"
+#bindsym $mod+c exec google-chrome-stable --proxy-server="socks5://localhost:1080"
+
+# If you have configed proxy SwitchOmega, you can just start app with proxy.
+bindsym $mod+c exec chromium
 bindsym $mod+p exec nitrogen
 bindsym $mod1+m exec iease-music
 bindsym $mod1+Shift+a exec deepin-screenshot
@@ -36,7 +40,8 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+#bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec st
 #bindsym $mod+Return exec terminal
 
 # kill focused window
@@ -61,8 +66,8 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 ################################################################################################
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "intel_brightness_control.sh -inc 100"
+bindsym XF86MonBrightnessDown exec "intel_brightness_control.sh -dec 100"
 
 bindsym XF86AudioRaiseVolume exec volume_up.sh
 bindsym XF86AudioLowerVolume exec volume_down.sh
@@ -291,8 +296,10 @@ bindsym $mod+9 exec --no-startup-id blurlock
 
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 # Autostart applications
+exec --no-startup-id xmodmap ~/.config/.Xmodmap
 exec_always fcitx
 exec_always albert
+exec --no-startup-id ss-qt5
 # After 5 min turn off screen
 exec --no-startup-id xset dpms 300 
 exec --no-startup-id start_conky_live_maia
@@ -343,6 +350,7 @@ set_from_resource $term_color15    color15
 bar {
 	i3bar_command i3bar
 	status_command i3status
+  status_command exec ~/.config/i3/net-speed.sh
 	position top
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'

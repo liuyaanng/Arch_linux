@@ -16,7 +16,7 @@ general {
 
 #order += "ipv6"
 order += "cpu_usage"
-order += "cpu_temperature 0"
+#order += "cpu_temperature 0"
 order += "disk /"
 #order += "disk /home"
 order += "wireless _first_"
@@ -62,11 +62,11 @@ battery all {
 		status_chr = "⚡"
 # status_bat = "bat"
 #status_bat = "☉"
-		status_bat = ""
+		status_bat = "😴"
 # status_unk = "?"
-		status_unk = ""
+		status_unk = "😑"
 # status_full = ""
-		status_full = "☻"
+		status_full = "😊"
 		low_threshold = 15
 		threshold_type = time
 }
